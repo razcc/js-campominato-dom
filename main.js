@@ -17,17 +17,9 @@ function play() {
     // !Bomb
     let bombArray = [];
     let bombEasy = "";
-    
-    // !Creazione di 16 bombe casuali e diverse fra loro EASY MODE
-    while (bombArray.length < 16) {
-        bombEasy = Math.floor((Math.random() * 100) + 1);
-        if (bombArray.includes(bombEasy)) {
-        }
-        else {
-            bombArray.push(bombEasy);
-        }
-    }
-    console.log(bombArray)
+    let bomNormal = "";
+    let bombHard = "";
+    let contatoreVincite = 0;
     // ^Input dal select per il tipo di difficolta
     difficolta = document.getElementById("dificultSelection").value;
     console.log(difficolta)
@@ -37,29 +29,49 @@ function play() {
 
     if (difficolta == "easy") {
 
+        // !Creazione di 16 bombe casuali e diverse fra loro EASY MODE
+        while (bombArray.length < 16) {
+            bombEasy = Math.floor((Math.random() * 100) + 1);
+            if (bombArray.includes(bombEasy)) {
+            }
+            else {
+                bombArray.push(bombEasy);
+            }
+        }
+        console.log(bombArray)
+
         // ^Ciclo per creare il quadrato 100 volte
         for (let i = 0; i < 100; i++) {
-
-
-
-
 
             // ^Richiamo la creazione del quadrato e lo metto in una variabile
             let activeElement = creazioneQaudrato(i + 1);
 
             //^Rendo il quadrato creato cliccabile, e aggiungo la classe
             activeElement.addEventListener('click', function () {
-                // *Aggiungo classe
-                this.classList.toggle('quadratoSelezionato');
+
+                if (bombArray.includes(i+1)) {
+                    // *Aggiungo classe quadrato bomba
+                    this.classList.toggle('quadratoBomba');
+                }
+                else {
+                    // *Aggiungo classe
+                    this.classList.toggle('quadratoSelezionato');
+                    contatoreVincite = contatoreVincite +1;
+                    console.log(contatoreVincite)
+                }
+
 
                 // *Metto dentro una variabile il valore del quadrato e lo stampo a console
                 let numeroCliccato = this.innerText;
                 console.log(numeroCliccato);
+
             })
 
             //^ "Appendo" Metto dentro ala variabile griglia il quadrato creato con gia le modifiche al click
             griglia.append(activeElement);
+            
         }
+        
         griglia.classList.add("customBorder");
 
     }

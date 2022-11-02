@@ -79,7 +79,11 @@ footer{
 }
 
 .quadratoSelezionato{
-    background-color: lightcoral;
+    background-color: rgb(28, 135, 242);
+}
+
+.quadratoBomba{
+    background-color: rgba(235, 41, 41, 0.862);
 }
 
 @media  screen and (max-width: 460px) {
