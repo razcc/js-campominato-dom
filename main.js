@@ -2,6 +2,7 @@
 let difficolta;
 let griglia = document.getElementById("areaDiGioco");
 
+
 // ^Funzione per creare quadrato
 function creazioneQaudrato(x) {
     const div = document.createElement("div");
@@ -13,17 +14,35 @@ function creazioneQaudrato(x) {
 
 
 function play() {
+    // !Bomb
+    let bombArray = [];
+    let bombEasy = "";
+    
+    // !Creazione di 16 bombe casuali e diverse fra loro EASY MODE
+    while (bombArray.length < 16) {
+        bombEasy = Math.floor((Math.random() * 100) + 1);
+        if (bombArray.includes(bombEasy)) {
+        }
+        else {
+            bombArray.push(bombEasy);
+        }
+    }
+    console.log(bombArray)
     // ^Input dal select per il tipo di difficolta
     difficolta = document.getElementById("dificultSelection").value;
     console.log(difficolta)
 
     // ^Svuotamento dell'area di gioco
     griglia.innerHTML = "";
-    
+
     if (difficolta == "easy") {
 
         // ^Ciclo per creare il quadrato 100 volte
         for (let i = 0; i < 100; i++) {
+
+
+
+
 
             // ^Richiamo la creazione del quadrato e lo metto in una variabile
             let activeElement = creazioneQaudrato(i + 1);
