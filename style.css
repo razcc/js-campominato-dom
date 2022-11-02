@@ -1,65 +1,69 @@
 /* ^Blocco del mosue */
 .loading {
-    pointer-events: none; 
+    pointer-events: none;
 }
 
-header{
+header {
     height: 10%;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-main{
+main {
     height: 85%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    position: relative;
 }
-footer{
+
+footer {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 5%;
 }
 
-#areaDiGioco{
+#areaDiGioco {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+    height: 80%;
+    width: 80%;
     margin: auto;
-    overflow: auto;
     aspect-ratio: 1/1;
-    margin: 50px 10px 50px 0;
-}
-#vinciteArea{
-    margin-right: 0;
-    padding: 0;
+
 }
 
-.imgLogoDimension{
+
+
+.imgLogoDimension {
     height: 100%;
 }
-.imgLogoContainerDimension{
+
+.imgLogoContainerDimension {
     height: 100%;
 }
-.buttomContainer{
+
+.buttomContainer {
     margin-right: 10px;
 }
-#playButtom{
+
+#playButtom {
     border: 1px solid black;
     border-radius: 5px;
     font-size: medium;
 }
 
 /* Bordi dati al container area di gioco con java */
-.customBorder{
+.customBorder {
     border-top: 1px solid black;
     border-left: 1px solid black;
 }
 
 /* ^Quadrati  */
-.quadrato{
+.quadrato {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -69,67 +73,75 @@ footer{
     width: calc(100% / 10);
 }
 
-.quadratoLevelNormal{
+.quadratoLevelNormal {
     display: flex;
     justify-content: center;
     align-items: center;
     border-right: 1px solid black;
-    border-bottom: 1px solid black;  
+    border-bottom: 1px solid black;
     height: calc(100% / 9);
     width: calc(100% / 9);
 }
 
-.quadratoLevelHard{
+.quadratoLevelHard {
     display: flex;
     justify-content: center;
     align-items: center;
     border-right: 1px solid black;
-    border-bottom: 1px solid black; 
+    border-bottom: 1px solid black;
     height: calc(100% / 7);
     width: calc(100% / 7);
 }
 
-.quadratoSelezionato{
+.quadratoSelezionato {
     background-color: rgb(28, 135, 242);
 }
 
-.quadratoBomba{
+.quadratoBomba {
     background-color: rgba(235, 41, 41, 0.862);
 }
 
-@media  screen and (max-width: 460px) {
+@media screen and (max-width: 460px) {
 
-    header{
+    header {
         flex-direction: column;
         height: 15%;
     }
-    main{
+
+    main {
         height: 80%;
     }
-    .imgLogoContainerDimension{
+
+    .imgLogoContainerDimension {
         height: 50%;
     }
-    .buttomContainer{
+
+    .buttomContainer {
         margin-top: 4px;
         padding-bottom: 40px;
     }
-    #dificultSelection{
+
+    #dificultSelection {
         font-size: small;
     }
-    #playButtom{
+
+    #playButtom {
         font-size: small;
     }
-   
+
 
 }
-@media  screen and (min-width: 1024px) {
-    .quadrato{
+
+@media screen and (min-width: 1024px) {
+    .quadrato {
         font-size: larger;
     }
-    #dificultSelection{
+
+    #dificultSelection {
         font-size: 25px;
     }
-    #playButtom{
+
+    #playButtom {
         font-size: 25px;
     }
 

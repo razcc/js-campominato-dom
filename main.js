@@ -1,7 +1,11 @@
 // ^Variabili Globali
 let difficolta;
 let griglia = document.getElementById("areaDiGioco");
+let playButtom = document.getElementById("playButtom");
 
+
+
+// !Variabile se si perde
 
 // ^Funzione per creare quadrato
 function creazioneQaudrato(x) {
@@ -13,19 +17,23 @@ function creazioneQaudrato(x) {
 
 
 
-function play() {
+playButtom.addEventListener("click", function play() {
+   
     // !Bomb
     let bombArray = [];
     let bomb = "";
     let contatoreVincite = 0;
+
     griglia.classList.remove("loading");
+
+    // ^Svuotamento dell'area di gioco
+    griglia.innerHTML = "";
 
     // ^Input dal select per il tipo di difficolta
     difficolta = document.getElementById("dificultSelection").value;
     console.log(difficolta)
 
-    // ^Svuotamento dell'area di gioco
-    griglia.innerHTML = "";
+
 
     if (difficolta == "easy") {
 
@@ -34,12 +42,14 @@ function play() {
 
             bomb = Math.floor((Math.random() * 100) + 1);
             if (bombArray.includes(bomb)) {
+                // Niente
             }
             else {
                 bombArray.push(bomb);
             }
         }
         console.log(bombArray)
+
 
         // ^Ciclo per creare il quadrato 100 volte
         for (let i = 0; i < 100; i++) {
@@ -50,22 +60,19 @@ function play() {
             //^Rendo il quadrato creato cliccabile, e aggiungo la classe
             activeElement.addEventListener('click', function () {
 
-                if (bombArray.includes(i+1)) {
+                if (bombArray.includes(i + 1)) {
                     // *Aggiungo classe quadrato bomba
                     this.classList.toggle('quadratoBomba');
-                    document.getElementById("vinciteArea").innerHTML= `HAI PERSO`;
-                    griglia.classList.toggle("loading");
-                    
+                    griglia.classList.add("loading");
+
                 }
                 else {
                     // *Aggiungo classe
                     this.classList.toggle('quadratoSelezionato');
-                    
-                   this.classList.toggle("loading");
-
-                    contatoreVincite = contatoreVincite +1;
+                    this.classList.toggle("loading");
+                    contatoreVincite = contatoreVincite + 1;
                     console.log(contatoreVincite)
-                    document.getElementById("vinciteArea").innerHTML= `Partite vinte: ${contatoreVincite}`;
+
                 }
 
 
@@ -77,19 +84,19 @@ function play() {
 
             //^ "Appendo" Metto dentro ala variabile griglia il quadrato creato con gia le modifiche al click
             griglia.append(activeElement);
-            
+
         }
-        
+
         griglia.classList.add("customBorder");
-        
-        
+
+
 
     }
     else if (difficolta == "normal") {
 
-         // !Creazione di 16 bombe casuali e diverse fra loro NORMAL MODE
-         while (bombArray.length < 16) {
-            
+        // !Creazione di 16 bombe casuali e diverse fra loro NORMAL MODE
+        while (bombArray.length < 16) {
+
             bomb = Math.floor((Math.random() * 81) + 1);
 
             if (bombArray.includes(bomb)) {
@@ -111,17 +118,18 @@ function play() {
             // Rendo il quadrato cliccabile aggiungendogli la classe
             activeElement.addEventListener('click', function () {
 
-                if (bombArray.includes(i+1)) {
+                if (bombArray.includes(i + 1)) {
                     // *Aggiungo classe quadrato bomba
                     this.classList.toggle('quadratoBomba');
-                    document.getElementById("vinciteArea").innerHTML= `HAI PERSO`;
+                    griglia.classList.add("loading");
                 }
                 else {
                     // *Aggiungo classe
                     this.classList.toggle('quadratoSelezionato');
-                    contatoreVincite = contatoreVincite +1;
+                    this.classList.toggle("loading");
+                    contatoreVincite = contatoreVincite + 1;
                     console.log(contatoreVincite)
-                    document.getElementById("vinciteArea").innerHTML= `Partite vinte: ${contatoreVincite}`;
+                    
                 }
 
                 let numeroCliccato = this.innerText;
@@ -137,7 +145,7 @@ function play() {
     else {
         // !Creazione di 16 bombe casuali e diverse fra loro HARD MODE
         while (bombArray.length < 16) {
-            
+
             bomb = Math.floor((Math.random() * 49) + 1);
 
             if (bombArray.includes(bomb)) {
@@ -159,19 +167,19 @@ function play() {
             // Rendo il quadrato cliccabile aggiungendogli la classe
             activeElement.addEventListener('click', function () {
 
-                if (bombArray.includes(i+1)) {
+                if (bombArray.includes(i + 1)) {
                     // *Aggiungo classe quadrato bomba
                     this.classList.toggle('quadratoBomba');
-                    document.getElementById("vinciteArea").innerHTML= `HAI PERSO`;
-                    
+                    griglia.classList.add("loading");
+
                 }
                 else {
                     // *Aggiungo classe
                     this.classList.toggle('quadratoSelezionato');
 
-                    contatoreVincite = contatoreVincite +1;
+                    this.classList.toggle("loading");
+                    contatoreVincite = contatoreVincite + 1;
                     console.log(contatoreVincite)
-                    document.getElementById("vinciteArea").innerHTML= `Partite vinte: ${contatoreVincite}`;
                 }
 
                 let numeroCliccato = this.innerText;
@@ -188,4 +196,4 @@ function play() {
 
 
 }
-
+)
