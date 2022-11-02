@@ -18,6 +18,8 @@ function play() {
     let bombArray = [];
     let bomb = "";
     let contatoreVincite = 0;
+    griglia.classList.remove("loading");
+
     // ^Input dal select per il tipo di difficolta
     difficolta = document.getElementById("dificultSelection").value;
     console.log(difficolta)
@@ -52,7 +54,7 @@ function play() {
                     // *Aggiungo classe quadrato bomba
                     this.classList.toggle('quadratoBomba');
                     document.getElementById("vinciteArea").innerHTML= `HAI PERSO`;
-                    griglia.classList.toggle("loading")
+                    griglia.classList.toggle("loading");
                     
                 }
                 else {
