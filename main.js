@@ -3,9 +3,14 @@ let difficolta;
 let griglia = document.getElementById("areaDiGioco");
 let playButtom = document.getElementById("playButtom");
 
+// !Variabile se si perde e delle vincite
+let areaVinciteGameOver = document.getElementById("areaVinciteGameOver");
+
+let divPerdite = document.getElementById("gameOver");
+
+let divVincite = document.getElementById("partiteVinte");
 
 
-// !Variabile se si perde
 
 // ^Funzione per creare quadrato
 function creazioneQaudrato(x) {
@@ -18,13 +23,17 @@ function creazioneQaudrato(x) {
 
 
 playButtom.addEventListener("click", function play() {
-   
+
+
     // !Bomb
     let bombArray = [];
     let bomb = "";
     let contatoreVincite = 0;
 
     griglia.classList.remove("loading");
+
+    divPerdite.innerText = "";
+    divVincite.innerText = "";
 
     // ^Svuotamento dell'area di gioco
     griglia.innerHTML = "";
@@ -65,13 +74,20 @@ playButtom.addEventListener("click", function play() {
                     this.classList.toggle('quadratoBomba');
                     griglia.classList.add("loading");
 
+                    // Vincite e GameOver
+
+                    divPerdite.innerText = "GAMEOVER";
+                    divVincite.innerText = `Partite vinte: ${contatoreVincite}`;
+
+
+
                 }
                 else {
                     // *Aggiungo classe
                     this.classList.toggle('quadratoSelezionato');
                     this.classList.toggle("loading");
                     contatoreVincite = contatoreVincite + 1;
-                    console.log(contatoreVincite)
+                    console.log(`Hai vinto: ${contatoreVincite} volte`)
 
                 }
 
@@ -122,6 +138,13 @@ playButtom.addEventListener("click", function play() {
                     // *Aggiungo classe quadrato bomba
                     this.classList.toggle('quadratoBomba');
                     griglia.classList.add("loading");
+
+                    // Vincite e GameOver
+                    areaVinciteGameOver.append(divPerdite);
+                    divPerdite.append("GAMEOVER");
+
+                    divVincite.append(`Partite vinte: ${contatoreVincite}`);
+                    areaVinciteGameOver.append(divVincite);
                 }
                 else {
                     // *Aggiungo classe
@@ -129,7 +152,7 @@ playButtom.addEventListener("click", function play() {
                     this.classList.toggle("loading");
                     contatoreVincite = contatoreVincite + 1;
                     console.log(contatoreVincite)
-                    
+
                 }
 
                 let numeroCliccato = this.innerText;
@@ -138,9 +161,11 @@ playButtom.addEventListener("click", function play() {
             })
 
 
+
             griglia.append(activeElement);
         }
         griglia.classList.add("customBorder");
+
     }
     else {
         // !Creazione di 16 bombe casuali e diverse fra loro HARD MODE
@@ -172,6 +197,12 @@ playButtom.addEventListener("click", function play() {
                     this.classList.toggle('quadratoBomba');
                     griglia.classList.add("loading");
 
+                    // Vincite e GameOver
+                    areaVinciteGameOver.append(divPerdite);
+                    divPerdite.append("GAMEOVER");
+
+                    divVincite.append(`Partite vinte: ${contatoreVincite}`);
+                    areaVinciteGameOver.append(divVincite);
                 }
                 else {
                     // *Aggiungo classe
@@ -196,4 +227,6 @@ playButtom.addEventListener("click", function play() {
 
 
 }
+
 )
+
