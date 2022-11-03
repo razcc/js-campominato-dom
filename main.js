@@ -1,3 +1,4 @@
+
 // ^Variabili Globali
 let difficolta;
 let griglia = document.getElementById("areaDiGioco");
@@ -5,11 +6,8 @@ let playButtom = document.getElementById("playButtom");
 
 // !Variabile se si perde e delle vincite
 let areaVinciteGameOver = document.getElementById("areaVinciteGameOver");
-
 let divPerdite = document.getElementById("gameOver");
-
 let divVincite = document.getElementById("partiteVinte");
-
 
 
 // ^Funzione per creare quadrato
@@ -21,9 +19,7 @@ function creazioneQaudrato(x) {
 }
 
 
-
 playButtom.addEventListener("click", function play() {
-
 
     // !Bomb
     let bombArray = [];
@@ -43,7 +39,6 @@ playButtom.addEventListener("click", function play() {
     console.log(difficolta)
 
 
-
     if (difficolta == "easy") {
 
         // !Creazione di 16 bombe casuali e diverse fra loro EASY MODE
@@ -58,7 +53,6 @@ playButtom.addEventListener("click", function play() {
             }
         }
         console.log(bombArray)
-
 
         // ^Ciclo per creare il quadrato 100 volte
         for (let i = 0; i < 100; i++) {
@@ -75,12 +69,15 @@ playButtom.addEventListener("click", function play() {
                     griglia.classList.add("loading");
 
                     // Vincite e GameOver
-
                     divPerdite.innerText = "GAMEOVER";
                     divVincite.innerText = `Partite vinte: ${contatoreVincite}`;
 
+                    for (let y = 0; y < 100; y++) {
+                        if (bombArray.includes( parseInt( griglia.children[y].innerHTML) ) ) {
+                            griglia.children[y].classList.add("quadratoBomba");
+                        }
 
-
+                    }
                 }
                 else {
                     // *Aggiungo classe
@@ -88,24 +85,18 @@ playButtom.addEventListener("click", function play() {
                     this.classList.toggle("loading");
                     contatoreVincite = contatoreVincite + 1;
                     console.log(`Hai vinto: ${contatoreVincite} volte`)
-
                 }
-
 
                 // *Metto dentro una variabile il valore del quadrato e lo stampo a console
                 let numeroCliccato = this.innerText;
                 console.log(numeroCliccato);
-
             })
 
             //^ "Appendo" Metto dentro ala variabile griglia il quadrato creato con gia le modifiche al click
             griglia.append(activeElement);
 
         }
-
         griglia.classList.add("customBorder");
-
-
 
     }
     else if (difficolta == "normal") {
@@ -160,14 +151,13 @@ playButtom.addEventListener("click", function play() {
 
             })
 
-
-
             griglia.append(activeElement);
         }
         griglia.classList.add("customBorder");
 
     }
     else {
+
         // !Creazione di 16 bombe casuali e diverse fra loro HARD MODE
         while (bombArray.length < 16) {
 
@@ -218,15 +208,10 @@ playButtom.addEventListener("click", function play() {
 
             })
 
-
             griglia.append(activeElement);
         }
         griglia.classList.add("customBorder");
     }
 
-
-
-}
-
-)
+})
 
